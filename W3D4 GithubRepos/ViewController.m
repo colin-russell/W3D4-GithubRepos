@@ -7,11 +7,12 @@
 //
 
 #import "ViewController.h"
+#import "Repo.h"
 
 @interface ViewController () <UITableViewDataSource>
 @property UITableView *tableView;
-@property NSArray *repos;
 @property NSMutableArray *repoNames;
+@property NSMutableArray *repoObjects;// hold all of my repo objects that have NSDictionaries of each repo
 @end
 
 @implementation ViewController
@@ -20,6 +21,7 @@
     [super viewDidLoad];
     
     self.repoNames = [NSMutableArray new];
+    self.repoObjects = [NSMutableArray new];
     [self setupTableView];
     
     NSURL *url = [NSURL URLWithString:@"https://api.github.com/users/colin-russell/repos"]; // 1
@@ -27,6 +29,7 @@
     
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration]; // 3
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration]; // 4
+    
     
     NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:urlRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (error) { //step 1
@@ -36,7 +39,7 @@
         }
         
         NSError *jsonError = nil;
-        self.repos = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError]; // step 2
+        NSDictionary *repos = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError]; // step 2
         
         if (jsonError) { // step 3
             NSLog(@"jsonError: %@", jsonError.localizedDescription);
@@ -44,13 +47,14 @@
         }
         
         // If we reach this point, we have successfully retrieved the JSON from the API
-        for (NSDictionary *repo in self.repos) { // step 4
+        for (NSDictionary *repo in repos) { // step 4
             NSString *repoName = repo[@"name"];
             NSLog(@"repo: %@", repoName);
             [self.repoNames addObject:repoName];
-            //NSLog(@"repoNames count:%lu",self.repoNames.count);
+            Repo *repoObject = [[Repo alloc] initWithRepo:repo];
+            [self.repoObjects addObject:repoObject];
         }
-        
+       
         [NSOperationQueue.mainQueue addOperationWithBlock:^{
             [self.tableView reloadData];
         }];
@@ -75,7 +79,6 @@
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSLog(@"count: %lu", self.repoNames.count);
     return self.repoNames.count;
 }
 

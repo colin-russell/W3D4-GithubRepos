@@ -13,6 +13,7 @@
 		3BF53AC92092359800590C35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BF53AC82092359800590C35 /* Assets.xcassets */; };
 		3BF53ACC2092359800590C35 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BF53ACA2092359800590C35 /* LaunchScreen.storyboard */; };
 		3BF53ACF2092359800590C35 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF53ACE2092359800590C35 /* main.m */; };
+		3BF53AD72092578900590C35 /* Repo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF53AD62092578900590C35 /* Repo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,8 @@
 		3BF53ACB2092359800590C35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3BF53ACD2092359800590C35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3BF53ACE2092359800590C35 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3BF53AD52092578900590C35 /* Repo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Repo.h; sourceTree = "<group>"; };
+		3BF53AD62092578900590C35 /* Repo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Repo.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +70,8 @@
 				3BF53ACA2092359800590C35 /* LaunchScreen.storyboard */,
 				3BF53ACD2092359800590C35 /* Info.plist */,
 				3BF53ACE2092359800590C35 /* main.m */,
+				3BF53AD52092578900590C35 /* Repo.h */,
+				3BF53AD62092578900590C35 /* Repo.m */,
 			);
 			path = "W3D4 GithubRepos";
 			sourceTree = "<group>";
@@ -144,6 +149,7 @@
 				3BF53AC42092359400590C35 /* ViewController.m in Sources */,
 				3BF53ACF2092359800590C35 /* main.m in Sources */,
 				3BF53AC12092359400590C35 /* AppDelegate.m in Sources */,
+				3BF53AD72092578900590C35 /* Repo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
